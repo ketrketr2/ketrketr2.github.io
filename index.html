@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>TOYOTA MARKETING BOARDS — ダッシュボード ポータル</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=JetBrains+Mono:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#080D18;--bg2:#0C1322;--panel:#111A2C;--panel2:#152037;--line:#1E2C46;--line2:#2B3D5E;
+ --tx:#EAF1FB;--sub:#9EB1CD;--dim:#5F7291;
+ --cy:#22C7D6;--or:#FF8A3D;--gn:#2FE0A8;--yl:#FFD24A;--pk:#FF6FA5;--vi:#9E8BFF;--bl:#4C9BF5;
+ --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:radial-gradient(1200px 600px at 70% -10%,#0e1a33 0%,var(--bg) 55%);color:var(--tx);
+ font-family:'BIZ UDPGothic','BIZ UDGothic',Meiryo,sans-serif;min-height:100vh;padding:34px 20px 60px}
+.wrap{max-width:1080px;margin:0 auto}
+.hero{text-align:center;margin-bottom:8px}
+.hero .logo{font-family:var(--mono);font-weight:800;font-size:30px;letter-spacing:.04em}
+.hero .logo b{color:var(--cy)}
+.hero .sub{color:var(--sub);font-size:13px;margin-top:6px;line-height:1.9}
+.hero .badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.hb{font-size:10.5px;font-weight:700;padding:4px 12px;border-radius:999px;border:1px solid var(--line2);color:var(--sub);background:rgba(21,32,55,.6)}
+.hb.on{border-color:rgba(34,199,214,.5);color:var(--cy)}
+.sec{margin:34px 0 12px;display:flex;align-items:center;gap:12px}
+.sec h2{font-size:15px;letter-spacing:.06em}
+.sec .ln{flex:1;height:1px;background:linear-gradient(90deg,var(--line2),transparent)}
+.sec .tag{font-size:10px;font-weight:800;padding:2px 10px;border-radius:7px}
+.tag.live{background:rgba(47,224,168,.14);color:var(--gn);border:1px solid rgba(47,224,168,.4)}
+.tag.wip{background:rgba(255,210,74,.12);color:var(--yl);border:1px solid rgba(255,210,74,.4)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:linear-gradient(160deg,var(--panel2) 0%,var(--panel) 60%);border:1px solid var(--line);
+ border-radius:16px;padding:18px;position:relative;overflow:hidden;display:flex;flex-direction:column;
+ transition:transform .2s,box-shadow .2s,border-color .2s}
+a.card{text-decoration:none;color:inherit}
+a.card:hover{transform:translateY(-4px);border-color:var(--ac);box-shadow:0 14px 34px rgba(0,0,0,.45),0 0 0 1px var(--ac) inset}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--ac),transparent)}
+.ch{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.ico{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-size:19px;background:var(--bg2);border:1px solid var(--line2)}
+.ct b{display:block;font-family:var(--mono);font-size:14.5px;letter-spacing:.02em}
+.ct span{font-size:10px;color:var(--dim)}
+.st{margin-left:auto;font-size:9.5px;font-weight:800;padding:3px 9px;border-radius:7px;white-space:nowrap}
+.st.live{background:rgba(47,224,168,.14);color:var(--gn)}
+.st.wip{background:rgba(255,210,74,.12);color:var(--yl)}
+.ds{font-size:12px;color:var(--sub);line-height:1.85;margin-bottom:10px}
+.ds b{color:var(--tx)}
+.feats{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.ft{font-size:10px;color:var(--sub);background:rgba(12,19,34,.85);border:1px solid var(--line);border-radius:7px;padding:3px 8px}
+.cf{margin-top:auto;display:flex;align-items:center;gap:8px;font-size:11px}
+.url{font-family:var(--mono);font-size:10px;color:var(--dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.go{font-weight:800;color:var(--ac);white-space:nowrap}
+.lock{font-size:9px;color:var(--yl);border:1px solid rgba(255,210,74,.4);border-radius:6px;padding:2px 6px;white-space:nowrap}
+.wipcard{opacity:.88}
+.wipcard .wiptag{font-size:10px;color:var(--yl);margin-top:auto;display:flex;align-items:center;gap:7px}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--yl);animation:pl 1.6s infinite}
+@keyframes pl{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.75)}}
+.foot{margin-top:38px;border-top:1px solid var(--line);padding-top:16px;font-size:11px;color:var(--dim);line-height:2;text-align:center}
+.foot a{color:var(--cy);text-decoration:none}
+.mapnote{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-top:26px;font-size:11.5px;color:var(--sub);line-height:2}
+.mapnote b{color:var(--tx)}
+.mapnote .hl{background:linear-gradient(transparent 58%,rgba(255,210,74,.35) 58%);padding:0 1px}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <div class="hero">
+  <div class="logo">TOYOTA <b>MARKETING BOARDS</b></div>
+  <div class="sub">車種マーケ × AI可視性 × 販売店 × バリューチェーンを1枚で束ねるダッシュボード・ポータル<br>数値はすべて実測（GA4／AI日次計測／公的統計）・毎朝自動更新</div>
+  <div class="badges">
+   <span class="hb on">稼働中 3 ボード</span><span class="hb">構築予定 3 ボード</span><span class="hb">毎朝 06:38〜07:17 JST 自動更新</span>
+  </div>
+ </div>
+
+ <div class="sec"><h2>🟢 稼働中のボード</h2><span class="tag live">LIVE・毎朝自動更新</span><span class="ln"></span></div>
+ <div class="grid">
+
+  <a class="card" style="--ac:var(--cy)" href="https://ketrketr2.github.io/toyota-ga-board/" target="_blank" rel="noopener">
+   <div class="ch"><div class="ico">📊</div><div class="ct"><b>TOYOTA GA4 COMMAND</b><span>toyota.jp 全体の実測司令塔</span></div><span class="st live">LIVE</span></div>
+   <div class="ds"><b>toyota.jp全体のGA4実測</b>を12セクターで俯瞰。サイト全体の流入・回遊・CVから、<b>JP活用実績（T-Connect等の導線効果測定）</b>までを1枚で。</div>
+   <div class="feats"><span class="ft">サイト全体KPI</span><span class="ft">チャネル・流入構造</span><span class="ft">CV・見積り実測</span><span class="ft">JP活用実績（効果額換算）</span><span class="ft">車種横断ランキング</span></div>
+   <div class="cf"><span class="url">ketrketr2.github.io/toyota-ga-board/</span><span class="lock">🔒 ID/PW</span><span class="go">開く →</span></div>
+  </a>
+
+  <a class="card" style="--ac:var(--vi)" href="https://ketrketr2.github.io/toyota-geo-board/" target="_blank" rel="noopener">
+   <div class="ch"><div class="ico">🤖</div><div class="ct"><b>AI VISIBILITY BOARD</b><span>AIにどう見られているか（GEO）</span></div><span class="st live">LIVE</span></div>
+   <div class="ds">生活者のリアルな質問<b>60本×4つのAI面</b>（AI Overviews／AI Mode／ChatGPT／Gemini）を毎朝自動計測。トヨタの<b>言及・推奨・引用・センチメント</b>を日次スコア化。</div>
+   <div class="feats"><span class="ft">AI可視性スコア</span><span class="ft">ブランドSOV比較</span><span class="ft">クエリ別 言及・引用先</span><span class="ft">販売シェアとの差分</span><span class="ft">登録クエリ900本超</span></div>
+   <div class="cf"><span class="url">ketrketr2.github.io/toyota-geo-board/</span><span class="lock">🔒 ID/PW</span><span class="go">開く →</span></div>
+  </a>
+
+  <a class="card" style="--ac:var(--gn)" href="https://ketrketr2.github.io/roomy-command/" target="_blank" rel="noopener">
+   <div class="ch"><div class="ico">🚗</div><div class="ct"><b>ROOMY COMMAND</b><span>車種マーケ統合の第1号（ルーミー）</span></div><span class="st live">LIVE</span></div>
+   <div class="ds"><b>1車種を丸ごと統合</b>した車種マーケボード。GA実測×AI言及×市場（自販連）×SNS実査×ペルソナ×Google検索トレンドを15画面でクロス分析。<b>全車種展開の型</b>。</div>
+   <div class="feats"><span class="ft">総合スコア（5ミッション）</span><span class="ft">全30車種ランキング</span><span class="ft">AI言及トレンド×競合勝敗</span><span class="ft">検索状況（Googleトレンド）</span><span class="ft">SNS・ペルソナ・市場</span></div>
+   <div class="cf"><span class="url">ketrketr2.github.io/roomy-command/</span><span class="lock">🔒 ID/PW</span><span class="go">開く →</span></div>
+  </a>
+ </div>
+
+ <div class="sec"><h2>🟡 構築予定のボード</h2><span class="tag wip">PLANNING・順次構築</span><span class="ln"></span></div>
+ <div class="grid">
+
+  <div class="card wipcard" style="--ac:var(--bl)">
+   <div class="ch"><div class="ico">🎯</div><div class="ct"><b>CAR × AI DEEP DIVE</b><span>車種別AI深掘り（全社版）</span></div><span class="st wip">構築中</span></div>
+   <div class="ds">60クエリを<b>生活課題などの4〜6群に分類</b>し、群の重要度（検索量）×<b>どの車種・競合がどれだけ言及・推奨されるか</b>をマトリクスで。トヨタ全体⇔車種単位を切替でき、<b>販売シェアとAI推奨シェアの差分</b>（シェアが大きいほどAI比較で不利になる構造）を定点観測。</div>
+   <div class="feats"><span class="ft">クエリ群×車種マトリクス</span><span class="ft">販売シェア vs AI SOV差分</span><span class="ft">トヨタ全体⇔車種切替</span><span class="ft">取りこぼしクエリ検出</span></div>
+   <div class="wiptag"><span class="pulse"></span>設計中 — 8月会議のテーマ①（車種マーケ）対応</div>
+  </div>
+
+  <div class="card wipcard" style="--ac:var(--or)">
+   <div class="ch"><div class="ico">🏪</div><div class="ct"><b>DEALER LOCAL BOARD</b><span>販売店・地域ボード（新潟×愛知）</span></div><span class="st wip">構築中</span></div>
+   <div class="ds">県内シェアが対照的な<b>新潟×愛知の2県を深掘り</b>し、販売会社・店舗が<b>AIに言及・推奨されるクエリを逆算検出</b>。展示車・試乗車・在庫（今乗れる車）系クエリでの見え方と、<b>試乗車情報の鮮度ズレによるAI誤案内リスク</b>を監視。販売店に見せて価値が伝わる分析を目指す。</div>
+   <div class="feats"><span class="ft">新潟×愛知 比較</span><span class="ft">販売店言及クエリ逆算</span><span class="ft">試乗車・在庫クエリ群</span><span class="ft">AI誤案内リスク監視</span></div>
+   <div class="wiptag"><span class="pulse"></span>設計中 — テーマ③（販売店マーケ）対応・検出可否の検証から着手</div>
+  </div>
+
+  <div class="card wipcard" style="--ac:var(--pk)">
+   <div class="ch"><div class="ico">🔗</div><div class="ct"><b>VALUE CHAIN BOARD</b><span>周辺サービス認知（VC領域）</span></div><span class="st wip">構築中</span></div>
+   <div class="ds">金融・用品・<b>T-Connect・テレマ・通信</b>などの周辺サービスが、<b>AIとの会話のどんな文脈で登場するか（あるいは登場せず終わるか）</b>を計測。来店前の情報接点をつくり、「その課題、T-Connectで解決するかも」と適切に提示される状態へ。<b>認知ゼロ領域ゆえ改善幅は最大</b>。</div>
+   <div class="feats"><span class="ft">周辺サービス言及計測</span><span class="ft">文脈・引用元分析</span><span class="ft">公式/非公式の情報差</span><span class="ft">JP活用実績と接続</span></div>
+   <div class="wiptag"><span class="pulse"></span>設計中 — テーマ④（VC領域）対応・GA4 COMMANDのJP活用実績が土台</div>
+  </div>
+ </div>
+
+ <div class="mapnote">
+  <b>使い分けの目安：</b>全体を見るなら <b>GA4 COMMAND</b>／AIでの見られ方は <b>AI VISIBILITY</b>／1車種を深く追うなら <b>ROOMY COMMAND</b>。
+  3ボードとも<span class="hl">毎朝自動更新（GitHub Actions・人手ゼロ）</span>で、データはGA4実測・AI日次計測・自販連等の実データのみ（デモ値なし）。
+  ID/PWは別途お伝えしているものをご利用ください。
+ </div>
+
+ <div class="foot">
+  TOYOTA MARKETING BOARDS PORTAL ／ 管理者：<a href="mailto:nakai@slashslash.jp">nakai@slashslash.jp</a>（s/ash 中井）<br>
+  ボードの追加・改修のご要望はSlackまたはメールで。
+ </div>
+</div>
+</body>
+</html>
