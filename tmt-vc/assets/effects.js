@@ -1,0 +1,25 @@
+/* Cinematic presentation effects. Decorative only; disabled by reduced motion. */
+let effectsBurst=null,effectsObserver=null,effectNoticeTimer;
+function initEffects(){
+ const canvas=document.createElement('canvas');canvas.id='motionField';canvas.setAttribute('aria-hidden','true');document.body.prepend(canvas);
+ const ctx=canvas.getContext('2d');let w=innerWidth,h=innerHeight,last=0,t=0;const particles=Array.from({length:innerWidth<760?28:65},(_,i)=>({x:(i*.6180339)%1,y:(i*.38267)%1,z:.2+(i%7)/8,speed:.16+(i%5)*.09}));let bursts=[];
+ function resize(){w=innerWidth;h=innerHeight;const dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0)}resize();window.addEventListener('resize',resize,{passive:true});
+ effectsBurst=(x,y)=>{if(!state.motion)return;for(let i=0;i<22;i++){const a=i/22*Math.PI*2;bursts.push({x,y,vx:Math.cos(a)*(1.5+i%4),vy:Math.sin(a)*(1.5+i%4),life:1})}};
+ function draw(now){requestAnimationFrame(draw);if(document.hidden||now-last<33)return;last=now;ctx.clearRect(0,0,w,h);if(!state.motion)return;t+=.008;
+  const gx=w*(.68+Math.sin(t*.15)*.2),gy=h*(.4+Math.cos(t*.12)*.24);const glow=ctx.createRadialGradient(gx,gy,5,gx,gy,w*.55);glow.addColorStop(0,'#9ad7d411');glow.addColorStop(.5,'#dbc19a07');glow.addColorStop(1,'#00000000');ctx.fillStyle=glow;ctx.fillRect(0,0,w,h);
+  particles.forEach((p,i)=>{p.y-=.00036*p.speed;if(p.y<-.01)p.y=1.02;const x=p.x*w+Math.sin(t+p.z*20)*16,y=p.y*h;ctx.beginPath();ctx.strokeStyle=i%3?'#dbc19a25':'#9ad7d42f';ctx.moveTo(x,y);ctx.lineTo(x-7*p.z,y+26*p.z);ctx.stroke();ctx.beginPath();ctx.fillStyle=i%3?'#dbc19a85':'#9ad7d485';ctx.shadowColor=i%3?'#dbc19a':'#9ad7d4';ctx.shadowBlur=7;ctx.arc(x,y,1.1*p.z+.35,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;});
+  bursts=bursts.filter(p=>p.life>.03);bursts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vx*=.96;p.vy*=.96;p.life*=.92;ctx.fillStyle=`rgba(219,193,154,${p.life})`;ctx.fillRect(p.x,p.y,2,2)});
+ }requestAnimationFrame(draw);
+ const veil=document.createElement('div');veil.id='sceneSweep';veil.setAttribute('aria-hidden','true');document.body.append(veil);
+ const notice=document.createElement('div');notice.id='effectNotice';notice.setAttribute('aria-hidden','true');document.body.append(notice);
+ document.addEventListener('click',e=>{if(!state.motion)return;const b=e.target.closest('button,[data-tree-select]');if(b){effectsBurst(e.clientX||innerWidth*.7,e.clientY||innerHeight*.5);const ring=document.createElement('i');ring.className='click-burst';ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';document.body.append(ring);setTimeout(()=>ring.remove(),800)}if(e.target.closest('[data-lab-preset]'))effectNotice('SCENARIO ACTIVATED');if(e.target.closest('[data-save-scenario]'))effectNotice('IDEA CAPTURED');if(e.target.closest('[data-move]'))effectNotice('MOMENTUM UPDATED')});
+ document.addEventListener('input',e=>{if(!state.motion||e.target.type!=='range')return;const el=document.querySelector('.driver-sim-result')||document.querySelector('.gauge-center');if(el){el.classList.remove('result-flash');void el.offsetWidth;el.classList.add('result-flash')}});
+ effectsObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-sight');effectsObserver.unobserve(e.target)}}),{threshold:.08});
+}
+function effectNotice(text){if(!state.motion)return;const el=document.querySelector('#effectNotice');if(!el)return;el.textContent=text;el.classList.remove('visible');void el.offsetWidth;el.classList.add('visible');clearTimeout(effectNoticeTimer);effectNoticeTimer=setTimeout(()=>el.classList.remove('visible'),1700)}
+function enhanceView(){
+ const sweep=document.querySelector('#sceneSweep');if(sweep&&state.motion){sweep.classList.remove('sweeping');void sweep.offsetWidth;sweep.classList.add('sweeping')}
+ effectsObserver?.disconnect();document.querySelectorAll('#viewRoot .panel,#viewRoot .metric,#viewRoot .action-card').forEach((el,i)=>{el.classList.add('motion-reveal');el.style.setProperty('--reveal-delay',Math.min(i%5*65,260)+'ms');effectsObserver?.observe(el)});
+ const hero=document.querySelector('.hero');if(hero){const overlay=document.createElement('div');overlay.className='hero-lightshow';overlay.setAttribute('aria-hidden','true');overlay.innerHTML='<i class="hero-laser"></i><i class="hero-ring ring-one"></i><i class="hero-ring ring-two"></i><i class="hero-spark spark-one"></i><i class="hero-spark spark-two"></i>';hero.append(overlay);hero.onpointermove=e=>{if(!state.motion)return;const r=hero.getBoundingClientRect();hero.style.setProperty('--camera-x',((e.clientX-r.left)/r.width-.5)*16+'px');hero.style.setProperty('--camera-y',((e.clientY-r.top)/r.height-.5)*8+'px')};hero.onpointerleave=()=>{hero.style.setProperty('--camera-x','0px');hero.style.setProperty('--camera-y','0px')}}
+ document.querySelectorAll('.metric,.kpi-card,.saved-scenario').forEach(el=>{el.onpointermove=e=>{const r=el.getBoundingClientRect();el.style.setProperty('--spot-x',e.clientX-r.left+'px');el.style.setProperty('--spot-y',e.clientY-r.top+'px')}});
+}
