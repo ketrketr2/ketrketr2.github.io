@@ -32,6 +32,7 @@ font-family:'BIZ UDPGothic','BIZ UDGothic',Meiryo,sans-serif;min-height:100vh;pa
 .sec .tag{font-size:10px;font-weight:800;padding:2px 10px;border-radius:7px}
 .tag.live{background:rgba(47,224,168,.14);color:var(--gn);border:1px solid rgba(47,224,168,.4)}
 .tag.wip{background:rgba(255,210,74,.12);color:var(--yl);border:1px solid rgba(255,210,74,.4)}
+.tag.snap{background:rgba(220,189,128,.12);color:#DCBD80;border:1px solid rgba(220,189,128,.45)}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:900px){.grid{grid-template-columns:1fr}}
 .card{background:linear-gradient(160deg,var(--panel2) 0%,var(--panel) 60%);border:1px solid var(--line);
@@ -73,20 +74,10 @@ a.card:hover{transform:translateY(-4px);border-color:var(--ac);box-shadow:0 14px
 <div class="logo">TOYOTA <b>MARKETING BOARDS</b></div>
 <div class="sub">車種マーケ × AI可視性 × 中古車 × 販売店 × バリューチェーンを1枚で束ねるダッシュボード・ポータル<br>数値はすべて実測（GA4／AI日次計測／公的統計）・毎朝自動更新（中古車ボードは実測接続後に自動化）</div>
 <div class="badges">
-<span class="hb on">稼働中 5 ボード</span><span class="hb">構築予定 2 ボード</span><span class="hb">毎朝 06:38〜07:35 JST 自動更新</span><span class="hb on">UPDATE：U-CAR SIGNAL v05 — 計測対象を中古車プラットフォームに是正（2026-09-12）</span>
+<span class="hb on">稼働中 5 ボード</span><span class="hb on">分析ダッシュボード 1</span><span class="hb">構築予定 2 ボード</span><span class="hb">毎朝 06:38〜07:35 JST 自動更新</span><span class="hb on">UPDATE：ROOMY AIO（ルーミー AIO観測ダッシュボード）を追加（2026-10-03）</span>
 </div>
 </div>
 
-
-<section style="margin:30px 0 36px;border:1px solid #dbc19a55;border-radius:16px;overflow:hidden;background:#101315;position:relative">
-<a href="/tmt-vc/?v=en-3" style="display:block;text-decoration:none;color:#f0efeb;padding:32px;position:relative;isolation:isolate">
-<img src="/tmt-vc/assets/vision.webp" alt="" style="position:absolute;inset:0 0 0 auto;width:60%;height:100%;object-fit:cover;object-position:center 55%;opacity:.55;mask-image:linear-gradient(90deg,transparent,black 40%);z-index:-1">
-<div style="font:10px monospace;letter-spacing:3px;color:#dbc19a;margin-bottom:13px">TOYOTA THAILAND / INTERACTIVE DEALER DEMO</div>
-<div style="font-family:Arial,sans-serif;font-size:30px;font-weight:300;letter-spacing:3px">TMT VC COMMAND</div>
-<div style="font-size:17px;line-height:1.9;margin-top:12px">Every opportunity. In motion.</div>
-<p style="font-size:11px;color:#aeb8bd;line-height:1.9;max-width:550px">21 core KPIs. An explorable process tree. Scenarios you can compare.<br>Seven interactive views connecting dealer performance, opportunity and action.</p>
-<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><span style="display:inline-block;background:#dbc19a;color:#141719;padding:10px 19px;border-radius:4px;font-size:12px;font-weight:700">Explore the experience →</span><span style="font-size:10px;color:#dbc19a">English presentation · Sample data</span></div>
-</a></section>
 
 <div class="sec"><h2>🟢 稼働中のボード</h2><span class="tag live">LIVE・毎朝自動更新</span><span class="ln"></span></div>
 <div class="grid">
@@ -127,6 +118,17 @@ a.card:hover{transform:translateY(-4px);border-color:var(--ac);box-shadow:0 14px
 </a>
 </div>
 
+<div class="sec"><h2>📘 分析ダッシュボード</h2><span class="tag snap">2026-10-03 時点のスナップショット</span><span class="ln"></span></div>
+<div class="grid">
+
+<a class="card" style="--ac:#DCBD80" href="https://ketrketr2.github.io/roomy-aio/" target="_blank" rel="noopener">
+<div class="ch"><div class="ico">🛰️</div><div class="ct"><b>ROOMY AIO</b><span>ルーミー AIO観測ダッシュボード</span></div><span class="st new">NEW</span></div>
+<div class="ds">ルーミーを想定した問いに対する<b>4つのAI面（AI Overviews／AI Mode／ChatGPT／Gemini）の実回答</b>で、推奨・言及・引用・誤情報を測定。競合（他メーカー）、拡張分析、GA4・口コミとの突き合わせ、<b>施策プラン（当初案→修正案）</b>まで43画面。率には信頼区間を付け、統計の表記はAPA準拠。</div>
+<div class="feats"><span class="ft">推奨5位以内・言及・引用</span><span class="ft">競合・他メーカー</span><span class="ft">回答の揺らぎ（信頼性）</span><span class="ft">GA4 × AI</span><span class="ft">口コミ・検索</span><span class="ft">施策シミュレーター</span></div>
+<div class="cf"><span class="url">ketrketr2.github.io/roomy-aio/</span><span class="lock">🔒 ID/PW</span><span class="go">開く →</span></div>
+</a>
+</div>
+
 <div class="sec"><h2>🟡 構築予定のボード</h2><span class="tag wip">PLANNING・順次構築</span><span class="ln"></span></div>
 <div class="grid">
 
@@ -146,7 +148,7 @@ a.card:hover{transform:translateY(-4px);border-color:var(--ac);box-shadow:0 14px
 </div>
 
 <div class="mapnote">
-<b>使い分けの目安：</b>全体を見るなら <b>GA4 COMMAND</b>／AIでの見られ方は <b>AI VISIBILITY</b>／1車種を深く追うなら <b>ROOMY COMMAND</b>／車種横断のAI実測は <b>車種別AI分析</b>／中古車（弾探し・専業店との争い・GEO施策ROI）は <b>U-CAR SIGNAL</b>。
+<b>使い分けの目安：</b>全体を見るなら <b>GA4 COMMAND</b>／AIでの見られ方は <b>AI VISIBILITY</b>／1車種を深く追うなら <b>ROOMY COMMAND</b>／車種横断のAI実測は <b>車種別AI分析</b>／中古車（弾探し・専業店との争い・GEO施策ROI）は <b>U-CAR SIGNAL</b>／ルーミーのAI回答を統計的に深掘りするなら <b>ROOMY AIO</b>（2026-10-03時点の分析、自動更新なし）。
 4ボードは<span class="hl">毎朝自動更新（GitHub Actions・人手ゼロ）</span>で、データはGA4実測・AI日次計測・自販連等の実データのみ（デモ値なし）。U-CAR SIGNAL は GA4・実ページ診断・競合の掲載台数／販売台数・AI実測ラウンド（24クエリ）が実測、日次トレンドは形状のみモデルで水準は実測に再校正（画面上にバッジで明示）。
 ID/PWは別途お伝えしているものをご利用ください。
 </div>
