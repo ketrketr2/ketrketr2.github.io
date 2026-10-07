@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>会場ネットワーク 疎通チェック</title>
+<style>
+:root{--ink:#1f2a24;--mute:#6b7a6e;--ok:#1f7a3f;--ng:#b3261e;--wait:#8a6d00;--bg:#f5f6f2;--card:#fff;--line:#dfe4da}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"BIZ UDPGothic","BIZ UDGothic","Hiragino Sans","Noto Sans JP",sans-serif;font-size:15px;line-height:1.7}
+main{max-width:900px;margin:0 auto;padding:28px 16px 60px}
+h1{font-size:22px;margin:0 0 4px}p.lead{margin:0 0 18px;color:var(--mute);font-size:13px}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 18px}
+.sum div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.sum b{display:block;font-size:26px;line-height:1.1}.sum span{font-size:12px;color:var(--mute)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th{font-size:12px;color:var(--mute);text-align:left;padding:8px 12px;border-bottom:1px solid var(--line);font-weight:600}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+td.st{white-space:nowrap;font-weight:700;width:96px}.ok{color:var(--ok)}.ng{color:var(--ng)}.wait{color:var(--wait)}
+td small{display:block;color:var(--mute);font-size:12px;word-break:break-all}
+.grp{background:#eef2ea;font-size:12px;color:#3f5544;font-weight:700;padding:6px 12px}
+.foot{margin-top:18px;font-size:12px;color:var(--mute)}
+button{font:inherit;background:#1f3a2b;color:#fff;border:0;border-radius:8px;padding:9px 16px;cursor:pointer}
+button.sec{background:#fff;color:#1f3a2b;border:1px solid #1f3a2b;margin-left:8px}
+textarea{width:100%;height:120px;font:12px/1.5 ui-monospace,Menlo,monospace;margin-top:10px;border:1px solid var(--line);border-radius:8px;padding:8px}
+</style></head><body><main>
+<h1>会場ネットワーク 疎通チェック</h1>
+<p class="lead">このページを会場のPCで開くだけで、どの中継経路が使えるかを判定します。結果をコピーして送ってください。判定は約20秒で終わります。</p>
+<div class="sum"><div><b id="nOk" class="ok">0</b><span>通る</span></div><div><b id="nNg" class="ng">0</b><span>遮断・不達</span></div><div><b id="nWait" class="wait">0</b><span>確認中</span></div></div>
+<table><thead><tr><th>判定</th><th>経路</th><th>所要</th></tr></thead><tbody id="rows"></tbody></table>
+<div class="foot">
+<button id="again">もう一度</button><button class="sec" id="copy">結果をコピー</button>
+<textarea id="out" readonly></textarea>
+<p>判定の仕組み：各経路に小さな問い合わせを送り、8秒以内に正しい応答が返れば「通る」。フィルタの遮断画面や無応答は「遮断・不達」。ブラウザの情報（下）も結果に含めます。</p>
+</div>
+</main>
+<script>
+const T=[
+ ['このページ自身（github.io）','https://ketrketr2.github.io/stnet/ping.json','json'],
+ ['【会場サーバー】Mac mini 直通（Tailscale Funnel :10000）','https://mac-mini.tailec77f5.ts.net:10000/stnet/api/ping','json'],
+ ['【会場サーバー】Mac mini 直通（443番側・準備中）','https://mac-mini.tailec77f5.ts.net/stnet/api/ping','json'],
+ ['Cloudflare 一時トンネル（trycloudflare.com）','https://supply-depends-mil-tour.trycloudflare.com/stnet/api/ping','json'],
+ ['GitHub Codespaces 中継（app.github.dev）','https://improved-trout-qvqvw9qrxww2xw99-8769.app.github.dev/stnet/api/ping','json'],
+ ['GitHub API（api.github.com）','https://api.github.com/zen','text'],
+ ['Google API（googleapis.com）','https://www.googleapis.com/discovery/v1/apis?name=storage&preferred=true','json'],
+ ['Google Firestore（firestore.googleapis.com）','https://firestore.googleapis.com/v1/projects/stnet-netcheck/databases/(default)/documents/x','any'],
+ ['Gemini API（generativelanguage.googleapis.com）','https://generativelanguage.googleapis.com/v1beta/models','any'],
+ ['Google Cloud Run（run.app）','https://hello-world-xyz-an.a.run.app/','any'],
+ ['Cloudflare Workers（workers.dev）','https://stnet-netcheck.workers.dev/','any'],
+ ['Cloudflare DNS（cloudflare-dns.com）','https://cloudflare-dns.com/dns-query?name=example.com&type=A','jsonh'],
+ ['Microsoft Azure（azurewebsites.net）','https://stnet-netcheck.azurewebsites.net/','any'],
+ ['Amazon AWS（amazonaws.com）','https://s3.amazonaws.com/','any'],
+ ['Vercel（vercel.app）','https://vercel.app/','any'],
+ ['claude.ai','https://claude.ai/robots.txt','any'],
+];
+const rows=document.getElementById('rows'),out=document.getElementById('out');
+const S={};
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function render(){rows.innerHTML='';let ok=0,ng=0,wait=0;const lines=[];
+ for(const [name,url] of T){const r=S[url]||{st:'wait',msg:'確認中'};const cls=r.st;if(r.st==='ok')ok++;else if(r.st==='ng')ng++;else wait++;
+  const label=r.st==='ok'?'通る':r.st==='ng'?'遮断・不達':'確認中';
+  rows.insertAdjacentHTML('beforeend',`<tr><td class="st ${cls}">${label}</td><td>${esc(name)}<small>${esc(url)}</small><small>${esc(r.msg||'')}</small></td><td>${r.ms?r.ms+'ms':''}</td></tr>`);
+  lines.push(`${label}\t${name}\t${r.ms||''}ms\t${r.msg||''}`);}
+ document.getElementById('nOk').textContent=ok;document.getElementById('nNg').textContent=ng;document.getElementById('nWait').textContent=wait;
+ out.value=`会場ネットワーク疎通チェック ${new Date().toLocaleString('ja-JP')}\n${navigator.userAgent}\n\n`+lines.join('\n');}
+async function one(name,url,kind){const t0=performance.now();S[url]={st:'wait',msg:'確認中'};render();
+ try{const c=new AbortController();const id=setTimeout(()=>c.abort(),8000);
+  const r=await fetch(url,{mode:'cors',cache:'no-store',signal:c.signal,headers:kind==='jsonh'?{accept:'application/dns-json'}:{}});clearTimeout(id);
+  const ms=Math.round(performance.now()-t0);const ct=r.headers.get('content-type')||'';let body='';try{body=await r.text();}catch{}
+  const looksBlock=/i-?filter|digitalarts|アクセスが制限|ブロック|blocked/i.test(body);
+  if(looksBlock){S[url]={st:'ng',ms,msg:'フィルタの遮断画面が返りました'};}
+  else if(kind==='json'){let ok=false;try{const v=JSON.parse(body);ok=v&&(v.ok===true||Array.isArray(v.items)||v.kind);}catch{}S[url]=ok?{st:'ok',ms,msg:`HTTP ${r.status}`}:{st:'ng',ms,msg:`応答はあるが内容が違う（HTTP ${r.status}, ${ct.slice(0,30)}）`};}
+  else if(kind==='jsonh'){S[url]=/"Status"/.test(body)?{st:'ok',ms,msg:`HTTP ${r.status}`}:{st:'ng',ms,msg:`内容が違う（HTTP ${r.status}）`};}
+  else if(kind==='text'){S[url]=body.length>0&&body.length<400&&!/<html/i.test(body)?{st:'ok',ms,msg:`HTTP ${r.status}`}:{st:'ng',ms,msg:`内容が違う（HTTP ${r.status}）`};}
+  else{S[url]={st:'ok',ms,msg:`到達（HTTP ${r.status}）※サーバー未設置でも「到達」なら経路は通る`};}
+ }catch(e){const ms=Math.round(performance.now()-t0);
+  // CORSで読めないが到達はしている場合を no-cors で再判定
+  try{const c2=new AbortController();const id2=setTimeout(()=>c2.abort(),6000);await fetch(url,{mode:'no-cors',cache:'no-store',signal:c2.signal});clearTimeout(id2);
+   S[url]={st:kind==='any'?'ok':'ng',ms:Math.round(performance.now()-t0),msg:kind==='any'?'到達（応答の中身は読めないが経路は通る可能性大）':'応答は来るが内容を読めない（フィルタの遮断画面の可能性）'};}
+  catch(e2){S[url]={st:'ng',ms,msg:e.name==='AbortError'?'8秒待っても応答なし':'接続できない（'+(e.message||e.name)+'）'};}
+ }
+ render();}
+async function run(){for(const k in S)delete S[k];render();await Promise.all(T.map(([n,u,k])=>one(n,u,k)));}
+document.getElementById('again').onclick=run;
+document.getElementById('copy').onclick=()=>{out.select();document.execCommand('copy');};
+run();
+</script></body></html>
