@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>STNet 新規事業ワークショップ 2026.10.7 — 結果レビュー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1b2a22;--ink2:#48584d;--mute:#7b8a7e;--line:#dde3d8;--bg:#f4f5f0;--card:#ffffff;--brand:#1f4d33;--brand2:#2f7a4c;--hl:#fff176;--a:#1f6f8b;--b:#b8641f;--c:#6b4c9a;--good:#1f7a3f;--warn:#9a6b00;--bad:#b3261e}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"BIZ UDPGothic","BIZ UDGothic","Hiragino Sans","Noto Sans JP",sans-serif;font-size:15px;line-height:1.75}
+a{color:var(--brand2)}
+mark{background:linear-gradient(transparent 45%,var(--hl) 45%);padding:0 2px;color:inherit}
+header.top{background:var(--brand);color:#fff;padding:22px 24px 18px}
+header.top .wrap{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px 28px}
+header.top h1{margin:0;font-size:22px;line-height:1.3}header.top h1 small{display:block;font-size:12px;font-weight:400;opacity:.85;margin-bottom:4px;letter-spacing:.06em}
+header.top .meta{font-size:12px;opacity:.9;margin-left:auto;text-align:right}
+nav.tabs{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}
+nav.tabs .wrap{max-width:1180px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;padding:0 12px}
+nav.tabs button{font:inherit;font-size:13.5px;font-weight:700;background:none;border:0;border-bottom:3px solid transparent;padding:12px 14px;cursor:pointer;color:var(--ink2);white-space:nowrap}
+nav.tabs button.on{color:var(--brand);border-bottom-color:var(--brand)}
+nav.tabs button .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:1px}
+main{max-width:1180px;margin:0 auto;padding:24px 16px 80px}
+section.view{display:none}section.view.on{display:block}
+h2{font-size:19px;margin:28px 0 10px;display:flex;align-items:baseline;gap:10px}h2 small{font-size:12px;font-weight:400;color:var(--mute)}
+h2:first-child{margin-top:4px}
+.lead{margin:0 0 14px;font-size:15.5px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:0 0 18px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.tile b{display:block;font:700 30px/1.1 "BIZ UDPGothic",sans-serif;color:var(--brand)}.tile b small{font-size:13px;color:var(--ink2);margin-left:3px}
+.tile span{font-size:12px;color:var(--mute)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}}
+table.cmp{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.5px}
+table.cmp th{background:#eef2ea;text-align:left;padding:9px 12px;font-size:12px;color:var(--ink2);border-bottom:1px solid var(--line);vertical-align:top}
+table.cmp td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.65}
+table.cmp td:first-child,table.cmp th:first-child{width:110px;color:var(--mute);font-size:12px;background:#fafbf7}
+.teamtag{display:inline-block;font-size:11px;font-weight:700;color:#fff;border-radius:99px;padding:1px 9px;margin-right:6px;vertical-align:1px}
+.ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.idea{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 15px;position:relative}
+.idea.sel{border:2px solid var(--brand2);box-shadow:0 8px 20px #1f4d3314}
+.idea h4{margin:0 0 4px;font-size:15.5px;line-height:1.35}
+.idea .by{font-size:11.5px;color:var(--mute)}
+.idea .tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0 8px}
+.tag{font-size:10.5px;border-radius:99px;padding:2px 8px;background:#eef3e4;color:#3f5e3f;font-weight:700}
+.tag.sel{background:#d9ecc9;color:#1f4d33}.tag.rank{background:#e3eef7;color:#24506f}.tag.score{background:#1f4d33;color:#fff}
+.stars{display:grid;grid-template-columns:1fr 34px;align-items:center;gap:8px;margin:4px 0 8px;font-size:12px;color:#8a6a10}
+.stars i{display:block;height:7px;border-radius:4px;background:linear-gradient(90deg,#e8c04a,#d49a1c)}
+.stars b{text-align:right}
+.idea dl{display:grid;grid-template-columns:64px 1fr;gap:3px 8px;margin:0;font-size:12.5px;line-height:1.65}
+.idea dt{color:var(--mute);font-size:11.5px}.idea dd{margin:0}
+.res{font-size:11.5px;color:var(--ink2)}
+.memo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.memo .p{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--brand2);border-radius:10px;padding:12px 14px}
+.memo .p h5{margin:0 0 4px;font-size:12px;color:var(--mute);font-weight:700;letter-spacing:.04em}
+.memo .p p{margin:0;font-size:13.5px;white-space:pre-line}
+.hook{font-size:22px;font-weight:700;line-height:1.35;margin:6px 0 2px;white-space:pre-line;color:var(--brand)}
+.promise{font-size:14px;color:var(--ink2);margin:0 0 12px}
+.axes{display:grid;gap:7px;margin:4px 0 10px}
+.axis{display:grid;grid-template-columns:118px 1fr 44px;gap:8px;align-items:center;font-size:12.5px}
+.axis i{display:block;height:9px;border-radius:5px;background:#e4e9df;overflow:hidden}.axis i b{display:block;height:100%;background:var(--brand2)}
+.axis span:last-child{text-align:right;font-weight:700}
+.judges{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.judge{background:#f6f8f2;border-radius:10px;padding:10px 12px;font-size:12.8px;line-height:1.7}
+.judge b{display:flex;justify-content:space-between;font-size:12.5px}.judge .imp{color:#7a5a12;margin-top:4px}
+.next{background:#fffbea;border:1px solid #f1e3a2;border-radius:10px;padding:10px 14px;font-size:13.5px;margin-top:10px}
+.feedback{white-space:pre-line;font-size:13.5px}
+.roles{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--ink2);margin:0 0 10px}.roles b{color:var(--ink)}
+.empty{color:var(--mute);font-size:13px;padding:14px;border:1px dashed var(--line);border-radius:10px;text-align:center}
+svg text{font-family:inherit}
+.legend{display:flex;gap:16px;font-size:12.5px;margin:4px 0 0;flex-wrap:wrap}.legend span{display:inline-flex;align-items:center;gap:6px}.legend i{width:14px;height:3px;display:inline-block;border-radius:2px}
+.drop{border:2px dashed #9fb59a;border-radius:12px;padding:26px;text-align:center;background:#fff;color:var(--ink2)}
+.drop.over{background:#eef6ea;border-color:var(--brand2)}
+.btn{font:inherit;font-size:13.5px;font-weight:700;background:var(--brand);color:#fff;border:0;border-radius:8px;padding:9px 16px;cursor:pointer}
+.btn.sec{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+.btn.sm{font-size:12px;padding:6px 10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.note{font-size:12px;color:var(--mute)}
+.todo{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.5px}
+.todo th{background:#eef2ea;text-align:left;padding:8px 10px;font-size:12px;color:var(--ink2)}
+.todo td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.todo input,.todo textarea{font:inherit;font-size:13px;width:100%;border:1px solid var(--line);border-radius:6px;padding:5px 7px;background:#fff}
+.todo textarea{min-height:78px;resize:vertical}
+.banner{background:#fff3cd;border:1px solid #f1d27a;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 16px}
+footer{max-width:1180px;margin:0 auto;padding:0 16px 40px;font-size:11.5px;color:var(--mute)}
+@media print{nav.tabs,.noprint{display:none!important}section.view{display:block!important;page-break-before:always}section.view:first-of-type{page-break-before:auto}body{background:#fff}main{max-width:none}}
+</style></head><body>
+<header class="top"><div class="wrap">
+<h1><small>STNet 新規事業ワークショップ　2026年10月7日</small>結果レビュー — 3チームの案と、次の一歩</h1>
+<div class="meta">株式会社スラッシュ　中井健太郎<br><span id="asof">記録の読み込み待ち</span></div>
+</div></header>
+<nav class="tabs"><div class="wrap">
+<button data-v="all" class="on">全体を見る</button>
+<button data-v="A"><span class="dot" style="background:var(--a)"></span>チームA</button>
+<button data-v="B"><span class="dot" style="background:var(--b)"></span>チームB</button>
+<button data-v="C"><span class="dot" style="background:var(--c)"></span>チームC</button>
+<button data-v="next">次の一歩</button>
+<button data-v="load">記録の読み込み</button>
+</div></nav>
+<main>
+<div id="banner" class="banner noprint" style="display:none"></div>
+
+<section class="view on" id="v-all">
+<h2>当日の到達点 <small>3チーム・案カードから一案に絞って発表</small></h2>
+<div class="tiles" id="tiles"></div>
+<p class="lead" id="lead-all"></p>
+<h2>3案を並べる <small>誰の・いま・サービス・こう変わる・使う強み</small></h2>
+<div id="cmp"></div>
+<h2>5つの軸で見る <small>収益性・顧客の受容・競合と代替・アセットの活用・実現性と壁（各20点）</small></h2>
+<div class="grid2">
+<div class="card"><div id="radar"></div><div class="legend" id="radar-legend"></div></div>
+<div class="card"><div id="quad"></div><p class="note">横軸：顧客の受容　縦軸：実現性と壁。右上ほど「お客さまが選びやすく、始めやすい」。点数は3人のAI審査員と5軸の採点から。</p></div>
+</div>
+<h2>審査員の一言 <small>経営の目線・暮らしの実感・安心の条件</small></h2>
+<div id="judges-all"></div>
+</section>
+
+<section class="view" id="v-A"></section>
+<section class="view" id="v-B"></section>
+<section class="view" id="v-C"></section>
+
+<section class="view" id="v-next">
+<h2>次の一歩 <small>各案で「最初に確かめること」と「聞きに行く相手」。担当と期日はこの場で書き込めます（このPCに保存）</small></h2>
+<div id="next"></div>
+<div class="row noprint" style="margin-top:12px"><button class="btn sec sm" id="export-next">担当・期日を含めて書き出す（JSON）</button><button class="btn sec sm" onclick="window.print()">PDFにする（印刷）</button></div>
+</section>
+
+<section class="view" id="v-load">
+<h2>記録の読み込み <small>各チームのPCで保存した「記録（.json）」を、ここに入れます</small></h2>
+<div class="drop" id="drop">ここに .json ファイルをドロップ（3チーム分まとめて可）<br><span class="note">または</span><br><input type="file" id="file" accept="application/json,.json" multiple></div>
+<div class="row" style="margin-top:12px"><button class="btn sec sm" id="load-sample">サンプル（10/3〜4の検証データ）を見る</button><button class="btn sec sm" id="clear">読み込んだ記録を消す</button><span class="note" id="loadstat"></span></div>
+<p class="note" style="margin-top:14px">読み込んだ記録はこのブラウザの中にだけ保存されます。外部には送信しません。採点（5軸・3人の審査員）は、記録に採点が含まれている場合に表示します。</p>
+</section>
+</main>
+<footer>評価の物差し：STNet 単体 2025年度 売上高488.5億円・営業利益99.6億円（<a href="https://www.stnet.co.jp/archives/001/202604/press_20260430-2.pdf" target="_blank" rel="noreferrer">2025年度決算のお知らせ</a>）。AI審査員は公開情報をもとにした仮想の人物で、実在の方の意見ではありません。</footer>
+<script>
+const RN={"01": "ファミリータイムカプセル", "02": "セキュアホームAI", "03": "おうちの留守番", "04": "デジタル通院", "05": "セキュア・セーフティ保険", "fiber": "光回線・宅内の通信基盤", "dc": "データセンター・データ保管", "customer": "ピカラのお客さまとの関係", "router": "宅内ルーター・制御の知見", "security": "セキュリティ監視・運用の知見", "support": "対面・訪問サポートの接点", "corporate": "法人のお客さまとの接点", "partners": "地域の現地対応パートナー", "power": "電力データとの連携", "clinic": "地域の医療機関との協力", "insurance": "保険会社との連携", "experience": "社員の現場経験・困りごとの記憶", "trust": "地域で相談される関係", "prev0907-qe2rwwtdds": "データセンター", "prev0907-q6n7hvcxnj": "四国域内の通信回線", "prev0907-sdezhmdkcf": "システムインテグレーター人材", "prev0907-t3yo8tprug": "四国中の光ファイバー網", "prev0907-vpsv2edteg": "四国電力グループ", "prev0907-7vthp0iciy": "優秀なエンジニア", "prev0907-cf0s5rsftk": "SIM", "prev0907-kgi2gtthu0": "ピカラ販売パートナー", "prev0907-h18qk1p47i": "協業CATVとの関係", "prev0907-p9j9nas9o9": "30万の顧客基盤", "prev0907-0pe2hxbc1t": "ピカラショップ", "prev0907-qsxhieyd3e": "モバイル", "prev0907-6832ozhhx6": "各県の支店・営業所", "prev0907-4zwzwgvzdl": "ケーブル事業者との協業", "prev0907-wybtzm8jt0": "高度情報処理技術人材", "prev0907-ivz815rno4": "四国電力のネームバリュー", "prev0907-g6mi3a5o23": "ベンダーフリー", "prev0907-vwhf66iwmz": "瓦町オフィス（中心市街地のオフィス）", "prev0907-1sj4ddn02h": "通信・SI・PFが1つの会社内にある", "prev0907-4ks6ybo2ft": "第一種電気通信事業者", "prev0907-mc4gt7z5ck": "自治体との連携", "prev0907-vehb29y7zv": "ピカラ顧客データを使った情報提供", "prev0907-550714aas6": "久米社長（プロパー社長）", "prev0907-7a3oe9tpo9": "様々なサービスを１社で提供（情報・PF・通信）", "prev0907-5u3dizkr87": "SNS配信", "prev0907-xdmnv0wwm3": "パートナー企業", "prev0907-onxk88x8iu": "ピカラアプリ", "prev0907-u6tareabex": "適度なショップ", "prev0907-tmb931sew5": "ピカラアプリ", "prev0907-wo1gcafpeq": "自社保有GPU", "prev0907-26ij2u3vq8": "四県都での営業拠点", "prev0907-wksx5nd8ch": "KDDIとの協業関係", "prev0907-p3crhm1uy0": "まじめで従順な社員", "prev0907-in2ygypnqw": "心理的安全性の高い職場", "prev0907-i5hzdmry91": "通信インフラ", "prev0907-jabnl2uiug": "情報通信業界トップキーマンとの太いパイプ", "prev0907-a3c395bns9": "データ保存クラウド", "prev0907-g03yq9h50o": "社員が真面目", "prev0907-bcrd8xp685": "ぴーちゃん", "prev0907-x08vnghekx": "SoCoラボ（共創スペース）", "trump-gpu": "GPU・AI基盤", "trump-green": "再エネ100%のデータセンター", "trump-outside": "四国の外のお客さま", "trump-oricon": "顧客満足度「四国」18年連続1位", "trump-cities": "自治体との協定（具体名）", "trump-yonden": "四国電力グループの資産", "trump-partner": "提携・出資の枠組み", "trump-rd": "研究開発・実証のテーマ", "trump-finance": "小さく試せる財務の余力", "trump-billing": "検針・料金・請求の業務システムの知見"};
+const AXES=['収益性','顧客の受容','競合・代替','アセットの活用','実現性と壁'];
+const JUDGE=[['久米社長役','経営の目線'],['真央 · 27歳','暮らしの実感'],['和子 · 74歳','安心の条件']];
+const COL={A:'var(--a)',B:'var(--b)',C:'var(--c)'};
+const DL=[['adoption','選びたくなる理由'],['alternative','いまの代わりの手段'],['revenue','お金の流れ'],['barrier','一番大きな壁'],['nextTest','最初に確かめること'],['assets','自社で使うもの・協力'],['socialChange','四国で変わること'],['scaleBasis','規模の根拠']];
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const mk=s=>esc(s).replace(/⟪([^⟫]+)⟫/g,'<mark>$1</mark>');
+const KEY='stnet-review-v1', NKEY='stnet-review-next-v1';
+let DATA={}; // {A:{journey,workshop},B,C}
+const letter=t=>{const m=/([A-Fa-fＡ-Ｆ])/.exec(String(t||''));return m?m[1].normalize('NFKC').toUpperCase():'';};
+function resName(id,ws){const r=(ws.resources||[]).find(x=>x.id===id);return r?r.name:(RN[id]||id);}
+function selOf(d){const w=d.workshop;return w.ideas.find(i=>i.id===w.selectedId)||w.ideas.filter(i=>i.rank>0).sort((a,b)=>a.rank-b.rank)[0]||[...w.ideas].sort((a,b)=>(b.stars||[]).length-(a.stars||[]).length)[0]||null;}
+function review(i){return i&&i.evaluation&&i.evaluation.review||null;}
+function score(i){const r=review(i);return r?r.axes.reduce((n,a)=>n+(a.score||0),0):null;}
+function people(d){const s=new Set();for(const i of d.workshop.ideas){if(i.author)s.add(i.author);for(const n of i.stars||[])s.add(n);}for(const k of ['recorder','presenter','operator'])if(d.journey[k])s.add(d.journey[k]);return [...s];}
+
+function renderAll(){
+  const teams=['A','B','C'].filter(t=>DATA[t]);
+  const nIdeas=teams.reduce((n,t)=>n+DATA[t].workshop.ideas.length,0), nPeople=teams.reduce((n,t)=>n+people(DATA[t]).length,0), nSel=teams.filter(t=>selOf(DATA[t])).length;
+  document.getElementById('tiles').innerHTML=[['チーム',teams.length,''],['参加した人',nPeople,'人'],['書かれた案カード',nIdeas,'枚'],['磨いた案',nSel,'案']].map(([l,v,u])=>`<div class="tile"><b>${v}<small>${u}</small></b><span>${l}</span></div>`).join('');
+  document.getElementById('lead-all').innerHTML=teams.length?`当日は3チームがそれぞれ一案に絞り、「誰のどんな困りごとに、何を、自社のどの強みで」まで言葉にした。${teams.map(t=>{const s=selOf(DATA[t]);return s?`<span class="teamtag" style="background:${COL[t]}">チーム${t}</span><b>${esc(s.title)}</b>`:''}).filter(Boolean).join('　')}`:'記録を読み込むと、ここに3チームの到達点が出ます。';
+  // 比較表
+  if(!teams.length){document.getElementById('cmp').innerHTML='<div class="empty">記録がまだ読み込まれていません。「記録の読み込み」から入れてください。</div>';document.getElementById('radar').innerHTML='';document.getElementById('quad').innerHTML='';document.getElementById('judges-all').innerHTML='';return;}
+  const rows=[['案の名前',s=>`<b>${esc(s.title)}</b>`],['誰の',s=>esc(s.customer)],['いま',s=>esc(s.pain)],['サービス',s=>esc(s.service)],['こう変わる',s=>esc(s.solution||(s.draft&&s.draft.promise)||'')],['使う強み',(s,t)=>(s.resourceIds||[]).map(id=>resName(id,DATA[t].workshop)).join('・')],['目指す規模',s=>{const d=s.draft||{};return d.targetRevenue?`${d.targetYears||'—'}年後に 売上${d.targetRevenue}億円・営業利益${d.targetProfit||'—'}億円${d.baselineRevenue?`（STNet全体の約${(d.targetRevenue/d.baselineRevenue*100).toFixed(1)}%）`:''}`:'—';}],['合計点',s=>{const v=score(s);return v==null?'<span class="note">採点なし</span>':`<b>${v}</b><small>/100</small>`;}]];
+  document.getElementById('cmp').innerHTML=`<table class="cmp"><thead><tr><th></th>${teams.map(t=>`<th><span class="teamtag" style="background:${COL[t]}">チーム${t}</span>${esc(selOf(DATA[t])?.title||'—')}</th>`).join('')}</tr></thead><tbody>${rows.map(([l,f])=>`<tr><td>${l}</td>${teams.map(t=>{const s=selOf(DATA[t]);return `<td>${s?f(s,t):'—'}</td>`;}).join('')}</tr>`).join('')}</tbody></table>`;
+  // レーダー
+  const scored=teams.filter(t=>review(selOf(DATA[t])));
+  if(scored.length){
+    const cx=200,cy=170,R=118;const pt=(k,v)=>{const a=-Math.PI/2+k*2*Math.PI/5;return [cx+Math.cos(a)*R*v/20,cy+Math.sin(a)*R*v/20];};
+    let g='';for(const lv of [5,10,15,20]){g+=`<polygon points="${[0,1,2,3,4].map(k=>pt(k,lv).join(',')).join(' ')}" fill="none" stroke="#e1e6dc"/>`;}
+    for(let k=0;k<5;k++){const [x,y]=pt(k,20),[lx,ly]=pt(k,24.5);g+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#e1e6dc"/><text x="${lx}" y="${ly}" font-size="11.5" text-anchor="middle" dominant-baseline="middle" fill="#48584d">${AXES[k]}</text>`;}
+    for(const t of scored){const r=review(selOf(DATA[t]));const col=({A:'#1f6f8b',B:'#b8641f',C:'#6b4c9a'})[t];g+=`<polygon points="${r.axes.map((a,k)=>pt(k,a.score).join(',')).join(' ')}" fill="${col}" fill-opacity="0.12" stroke="${col}" stroke-width="2"/>${r.axes.map((a,k)=>{const [x,y]=pt(k,a.score);return `<circle cx="${x}" cy="${y}" r="4" fill="${col}"><title>チーム${t} ${AXES[k]} ${a.score}点</title></circle>`;}).join('')}`;}
+    document.getElementById('radar').innerHTML=`<svg viewBox="0 0 400 340" role="img" aria-label="5軸の比較" style="width:100%;max-width:440px;display:block;margin:0 auto">${g}</svg>`;
+    document.getElementById('radar-legend').innerHTML=scored.map(t=>`<span><i style="background:${COL[t]}"></i>チーム${t}・${esc(selOf(DATA[t]).title)}（${score(selOf(DATA[t]))}点）</span>`).join('');
+    // 2x2
+    const W=400,H=340,m=40;const X=v=>m+(v/20)*(W-2*m),Y=v=>H-m-(v/20)*(H-2*m);
+    let q=`<rect x="${m}" y="${m}" width="${W-2*m}" height="${H-2*m}" fill="none" stroke="#dde3d8"/><line x1="${X(10)}" y1="${m}" x2="${X(10)}" y2="${H-m}" stroke="#dde3d8" stroke-dasharray="4 4"/><line x1="${m}" y1="${Y(10)}" x2="${W-m}" y2="${Y(10)}" stroke="#dde3d8" stroke-dasharray="4 4"/>`;
+    q+=`<text x="${W/2}" y="${H-10}" font-size="11.5" text-anchor="middle" fill="#48584d">顧客の受容 →</text><text x="12" y="${H/2}" font-size="11.5" text-anchor="middle" fill="#48584d" transform="rotate(-90 12 ${H/2})">実現性と壁 →</text>`;
+    q+=`<text x="${W-m-6}" y="${m+16}" font-size="11" text-anchor="end" fill="#7b8a7e">選ばれやすく、始めやすい</text><text x="${m+6}" y="${H-m-8}" font-size="11" fill="#7b8a7e">まず問いを立て直す</text>`;
+    for(const t of scored){const r=review(selOf(DATA[t]));const col=({A:'#1f6f8b',B:'#b8641f',C:'#6b4c9a'})[t];const x=X(r.axes[1].score),y=Y(r.axes[4].score);q+=`<circle cx="${x}" cy="${y}" r="9" fill="${col}" fill-opacity=".85"/><text x="${x+13}" y="${y+4}" font-size="12" font-weight="700" fill="#1b2a22">${esc(selOf(DATA[t]).title)}</text>`;}
+    document.getElementById('quad').innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="顧客の受容と実現性の2軸" style="width:100%;max-width:440px;display:block;margin:0 auto">${q}</svg>`;
+    document.getElementById('judges-all').innerHTML=`<div class="grid3">${JUDGE.map(([n,role],j)=>`<div class="card"><b>${n}</b><span class="note">　${role}</span>${scored.map(t=>{const p=review(selOf(DATA[t])).personas[j];return `<p style="font-size:13px;margin:8px 0 0"><span class="teamtag" style="background:${COL[t]}">${t}</span>${mk(p.comment)}</p>`;}).join('')}</div>`).join('')}</div>`;
+  }else{document.getElementById('radar').innerHTML='<div class="empty">採点のある記録がまだありません。採点はこちらで後追いで付けて差し替えます。</div>';document.getElementById('quad').innerHTML='';document.getElementById('radar-legend').innerHTML='';document.getElementById('judges-all').innerHTML='<div class="empty">採点のある記録がまだありません。</div>';}
+}
+function renderTeam(t){
+  const el=document.getElementById('v-'+t);const d=DATA[t];
+  if(!d){el.innerHTML=`<h2>チーム${t}</h2><div class="empty">チーム${t}の記録はまだ読み込まれていません。</div>`;return;}
+  const w=d.workshop,j=d.journey,sel=selOf(d);const max=Math.max(1,...w.ideas.map(i=>(i.stars||[]).length));
+  const sorted=[...w.ideas].sort((a,b)=>Number(b===sel)-Number(a===sel)||(b.stars||[]).length-(a.stars||[]).length||(a.rank||9)-(b.rank||9));
+  let h=`<h2><span class="teamtag" style="background:${COL[t]}">チーム${t}</span>${esc(sel?sel.title:'—')} <small>${people(d).length}人・案カード${w.ideas.length}枚</small></h2>
+  <div class="roles"><span>まとめ役 <b>${esc(j.recorder||'—')}</b></span><span>発表者 <b>${esc(j.presenter||'—')}</b></span><span>操作係 <b>${esc(j.operator||'—')}</b></span><span>参加 <b>${people(d).map(esc).join('・')||'—'}</b></span></div>`;
+  if(j.previous)h+=`<p class="lead">前回からの持ち越し：${esc(j.previous)}</p>`;
+  h+=`<h2>出た案 <small>★の多い順。「磨く一案」は枠で強調</small></h2><div class="ideas">${sorted.map(i=>`<div class="idea ${i===sel?'sel':''}"><h4>${esc(i.title)}</h4><div class="by">${esc(i.author||'')}${i.with&&i.with.length?' ＋'+i.with.map(esc).join('・'):''}</div>
+    <div class="tags">${i===sel?'<span class="tag sel">磨く一案</span>':''}${i.rank>0?`<span class="tag rank">AIに${i.rank}位で</span>`:''}${score(i)!=null?`<span class="tag score">${score(i)}点</span>`:''}</div>
+    <div class="stars"><i style="width:${(i.stars||[]).length/max*100}%"></i><b>★${(i.stars||[]).length}</b></div>
+    <dl><dt>誰の</dt><dd>${esc(i.customer)||'—'}</dd><dt>いま</dt><dd>${esc(i.pain)||'—'}</dd><dt>サービス</dt><dd>${esc(i.service)||'—'}</dd><dt>こう変わる</dt><dd>${esc(i.solution)||'—'}</dd>${(i.resourceIds||[]).length?`<dt>使う強み</dt><dd class="res">${i.resourceIds.map(id=>esc(resName(id,w))).join('・')}</dd>`:''}${i.reason?`<dt>選んだ理由</dt><dd>${esc(i.reason)}</dd>`:''}</dl></div>`).join('')}</div>`;
+  if(sel){const dr=sel.draft||{};
+    h+=`<h2>磨いた案の中身 <small>発表メモ</small></h2><div class="card">${dr.hook?`<div class="hook">${esc(dr.hook)}</div>`:''}${dr.promise?`<p class="promise">${esc(dr.promise)}</p>`:''}${dr.steps&&dr.steps.some(Boolean)?`<ol style="margin:0 0 12px;padding-left:20px;font-size:13.5px">${dr.steps.filter(Boolean).map(s=>`<li>${esc(s)}</li>`).join('')}</ol>`:''}
+    <div class="memo">${DL.filter(([k])=>(dr[k]||'').trim()).map(([k,l])=>`<div class="p"><h5>${l}</h5><p>${esc(dr[k])}</p></div>`).join('')}${dr.targetRevenue?`<div class="p"><h5>目指す規模（仮説）</h5><p>${esc(dr.targetYears||'—')}年後に 売上${esc(dr.targetRevenue)}億円・営業利益${esc(dr.targetProfit||'—')}億円${dr.baselineRevenue?`\nSTNet全体（${esc(dr.baselineYear||'')}年度 売上${esc(dr.baselineRevenue)}億円）の約${(dr.targetRevenue/dr.baselineRevenue*100).toFixed(1)}%`:''}</p></div>`:''}</div>
+    ${!DL.some(([k])=>(dr[k]||'').trim())&&!dr.hook?'<div class="empty">発表メモはまだ書かれていません。</div>':''}</div>`;
+    const r=review(sel);
+    h+=`<h2>採点と講評 <small>5軸・各20点と、3人のAI審査員</small></h2>`;
+    if(r){h+=`<div class="card"><div class="row" style="justify-content:space-between"><b style="font-size:16px">合計 ${score(sel)} / 100</b><span class="note">${esc(sel.evaluation.model||'')}</span></div><div class="axes">${r.axes.map((a,k)=>`<div class="axis"><span>${AXES[k]}</span><i><b style="width:${a.score/20*100}%"></b></i><span>${a.score}<small>/20</small></span></div>`).join('')}</div>
+      <dl style="font-size:13px;margin:0;display:grid;gap:4px">${r.axes.map((a,k)=>`<div><b>${AXES[k]}</b>：${mk(a.reason)}</div>`).join('')}</dl>
+      <div class="judges" style="margin-top:12px">${r.personas.map((p,jx)=>`<div class="judge"><b>${JUDGE[jx]?JUDGE[jx][0]:'審査員'+(jx+1)}<span>${p.score}点</span></b><div>${mk(p.comment)}</div>${p.improve?`<div class="imp">直すなら：${mk(p.improve)}</div>`:''}</div>`).join('')}</div>
+      ${r.nextQuestion?`<div class="next"><b>次に考える問い</b>　${mk(r.nextQuestion)}</div>`:''}</div>`;}
+    else h+=`<div class="empty">この案の採点はまだありません。記録をもとに、同じ5軸・3人の審査員で後追いで採点し、差し替えます。</div>`;
+  }
+  if(j.feedback)h+=`<h2>講評と次の一歩 <small>当日に書き留めたもの</small></h2><div class="card feedback">${esc(j.feedback)}</div>`;
+  el.innerHTML=h;
+}
+function renderNext(){
+  const teams=['A','B','C'].filter(t=>DATA[t]);const saved=JSON.parse(localStorage.getItem(NKEY)||'{}');
+  if(!teams.length){document.getElementById('next').innerHTML='<div class="empty">記録を読み込むと、各案の「最初に確かめること」がここに並びます。</div>';return;}
+  document.getElementById('next').innerHTML=`<table class="todo"><thead><tr><th style="width:90px">チーム</th><th style="width:22%">案</th><th>最初に確かめること</th><th style="width:20%">聞きに行く相手</th><th style="width:110px">担当</th><th style="width:120px">期日</th></tr></thead><tbody>${teams.map(t=>{const s=selOf(DATA[t]);const dr=(s&&s.draft)||{};const v=saved[t]||{};const fb=DATA[t].journey.feedback||'';const who=v.who??(/(聞きに行く相手|相手)[：:]\s*([^\n]+)/.exec(fb)||[])[2]??'';const test=v.test??(dr.nextTest||(/(次に確かめる(?:こと)?)[：:]\s*([^\n]+)/.exec(fb)||[])[2]||'');return `<tr data-t="${t}"><td><span class="teamtag" style="background:${COL[t]}">チーム${t}</span></td><td><b>${esc(s?s.title:'—')}</b></td><td><textarea data-k="test">${esc(test)}</textarea></td><td><textarea data-k="who">${esc(who)}</textarea></td><td><input data-k="owner" value="${esc(v.owner||'')}" placeholder="例）山田"></td><td><input data-k="due" type="date" value="${esc(v.due||'')}"></td></tr>`;}).join('')}</tbody></table>`;
+  document.querySelectorAll('#next [data-k]').forEach(el=>el.addEventListener('input',()=>{const t=el.closest('tr').dataset.t;const o=JSON.parse(localStorage.getItem(NKEY)||'{}');o[t]={...(o[t]||{}),[el.dataset.k]:el.value};localStorage.setItem(NKEY,JSON.stringify(o));}));
+}
+function renderAllViews(){renderAll();for(const t of ['A','B','C'])renderTeam(t);renderNext();const n=Object.keys(DATA).length;document.getElementById('asof').textContent=n?`記録 ${n}チーム分 · ${new Date().toLocaleDateString('ja-JP')} 表示`:'記録の読み込み待ち';document.getElementById('loadstat').textContent=n?`読み込み済み：${Object.keys(DATA).map(t=>'チーム'+t).join('・')}`:'';const b=document.getElementById('banner');if(window.__SAMPLE){b.style.display='block';b.textContent='いま表示しているのは10/3〜4の検証用データ（サンプル）です。各チームの記録を読み込むと置き換わります。';}else b.style.display='none';}
+function addRecord(obj,name){if(!obj||obj.kind!=='stnet-day-v1'||!obj.journey||!obj.workshop)throw new Error(`${name}：このツールの記録（stnet-day-v1）ではありません`);const t=letter(obj.journey.team)||'A';DATA[t]={journey:obj.journey,workshop:obj.workshop};}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(DATA));}catch{}}
+async function readFiles(files){let ok=0,err=[];for(const f of files){try{addRecord(JSON.parse(await f.text()),f.name);ok++;}catch(e){err.push(e.message);}}window.__SAMPLE=false;persist();renderAllViews();document.getElementById('loadstat').textContent=`${ok}件読み込みました`+(err.length?`／エラー：${err.join('、')}`:'');}
+document.querySelectorAll('nav.tabs button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('nav.tabs button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('section.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+b.dataset.v));window.scrollTo({top:0});}));
+const drop=document.getElementById('drop');drop.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('over');});drop.addEventListener('dragleave',()=>drop.classList.remove('over'));drop.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('over');readFiles([...e.dataTransfer.files]);});
+document.getElementById('file').addEventListener('change',e=>readFiles([...e.target.files]));
+document.getElementById('clear').addEventListener('click',()=>{DATA={};window.__SAMPLE=false;localStorage.removeItem(KEY);renderAllViews();});
+document.getElementById('load-sample').addEventListener('click',async()=>{DATA={};for(const t of ['A','B','C']){try{const r=await fetch(`sample_${t}.json`,{cache:'no-store'});if(r.ok)addRecord(await r.json(),t);}catch{}}window.__SAMPLE=true;renderAllViews();});
+document.getElementById('export-next').addEventListener('click',()=>{const o={kind:'stnet-review-next-v1',exported:new Date().toISOString(),teams:Object.fromEntries(['A','B','C'].filter(t=>DATA[t]).map(t=>{const s=selOf(DATA[t]);const v=(JSON.parse(localStorage.getItem(NKEY)||'{}'))[t]||{};return [t,{idea:s?s.title:'',...v}];}))};const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(o,null,2)],{type:'application/json'}));a.download='stnet_next_steps.json';a.click();});
+(function init(){if(window.STNET_DATA){for(const k in window.STNET_DATA)try{addRecord(window.STNET_DATA[k],k);}catch{}}else{try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&typeof s==='object')DATA=s;}catch{}}renderAllViews();})();
+</script></body></html>
